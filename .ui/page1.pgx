@@ -8,7 +8,10 @@
 				"children": [
 					"42b807d1",
 					"b7d28cff",
-					"980522a9",
+					"372d-db2f-2d8d-f439",
+					"243f-fa83-8c54-85fb",
+					"fc11-3711-926a-1bc9",
+					"2b34-577c-0f0b-b8ab",
 					"9e49-7873-afba-472b"
 				],
 				"isRemovable": true,
@@ -19,9 +22,12 @@
 			},
 			"type": "Page",
 			"userProps": {
+				"backgroundColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
-					"justifyContent": "SPACE_BETWEEN",
-					"alignItems": "STRETCH"
+					"justifyContent": "FLEX_START",
+					"alignItems": "STRETCH",
+					"flexDirection": "COLUMN",
+					"alignContent": "STRETCH"
 				},
 				"orientation": "PORTRAIT",
 				"paddingBottom": 20,
@@ -29,8 +35,7 @@
 				"paddingRight": 16,
 				"safeAreaEnabled": true
 			},
-			"version": "6.15.1",
-			"degree": 0
+			"version": "6.15.1"
 		},
 		{
 			"className": ".sf-statusBar",
@@ -44,8 +49,7 @@
 			"type": "StatusBar",
 			"userProps": {
 				"visible": true
-			},
-			"degree": 1
+			}
 		},
 		{
 			"className": ".sf-headerBar",
@@ -61,46 +65,197 @@
 			"userProps": {
 				"title": "Page1",
 				"visible": true
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"id": "372d-db2f-2d8d-f439",
+			"props": {
+				"children": [
+					"263e-7373-689c-86ed"
+				],
+				"name": "flexLayout1",
+				"parent": "e891b86d",
+				"usePageVariable": true
 			},
-			"degree": 1
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"positionType": "RELATIVE"
+				},
+				"height": "46.77",
+				"testId": "KG2cawPo5",
+				"usePageVariable": true,
+				"visible": true,
+				"width": "354.84"
+			}
+		},
+		{
+			"className": ".sf-activityIndicator",
+			"id": "263e-7373-689c-86ed",
+			"props": {
+				"children": [],
+				"name": "activityIndicator1",
+				"parent": "372d-db2f-2d8d-f439",
+				"usePageVariable": true
+			},
+			"type": "ActivityIndicator",
+			"userProps": {
+				"flexProps": {
+					"positionType": "RELATIVE"
+				},
+				"testId": "8och1ncIK",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"id": "243f-fa83-8c54-85fb",
+			"props": {
+				"children": [
+					"a2fd-fe2d-f722-4cdf",
+					"8e83-00cc-c765-6086",
+					"0755-8d56-01a1-330a"
+				],
+				"name": "flHeader",
+				"parent": "e891b86d",
+				"usePageVariable": true
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"flexDirection": "ROW"
+				},
+				"height": 90,
+				"testId": "NDsQRH0Bl",
+				"usePageVariable": true,
+				"width": 345
+			}
+		},
+		{
+			"className": ".sf-imageView",
+			"id": "a2fd-fe2d-f722-4cdf",
+			"props": {
+				"children": [],
+				"name": "location",
+				"parent": "243f-fa83-8c54-85fb",
+				"usePageVariable": true
+			},
+			"type": "ImageView",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "CENTER",
+					"flexGrow": 1
+				},
+				"height": 60,
+				"image": "location.png",
+				"testId": "Ew2WWXGgI",
+				"usePageVariable": true,
+				"width": 60
+			}
 		},
 		{
 			"className": ".sf-label",
-			"id": "980522a9",
+			"id": "8e83-00cc-c765-6086",
 			"props": {
-				"autoHeight": 39.325842696629216,
 				"children": [],
-				"name": "lbl",
-				"parent": "e891b86d",
-				"text": "Page1",
+				"name": "lblCity",
+				"parent": "243f-fa83-8c54-85fb",
 				"usePageVariable": true
 			},
 			"type": "Label",
 			"userProps": {
-				"autoHeight": 39.325842696629216,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"flexProps": {
-					"marginLeft": 20,
-					"marginRight": 20,
-					"alignSelf": "STRETCH",
+					"flexGrow": 3,
+					"alignSelf": "CENTER"
+				},
+				"testId": "9JtaDhYWY",
+				"textAlignment": "MIDLEFT",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-imageView",
+			"id": "0755-8d56-01a1-330a",
+			"props": {
+				"children": [],
+				"name": "calendar",
+				"parent": "243f-fa83-8c54-85fb",
+				"usePageVariable": true
+			},
+			"type": "ImageView",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "CENTER",
 					"flexGrow": 1
 				},
-				"font": {
-					"size": 32,
-					"bold": false,
-					"italic": false,
-					"family": "SFProText",
-					"style": "Regular"
-				},
-				"height": 600,
-				"multiline": true,
-				"text": "Page1",
-				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 210, 210, 210, 1 )",
+				"height": 60,
+				"image": "calendar.png",
+				"left": 0,
+				"testId": "Ew2WWXGgI",
+				"top": 0,
 				"usePageVariable": true,
-				"testId": "L-42gAben"
+				"width": 60
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"id": "fc11-3711-926a-1bc9",
+			"props": {
+				"children": [
+					"4c7e-40b8-7f49-1d15"
+				],
+				"name": "flexLayout2",
+				"parent": "e891b86d"
 			},
-			"degree": 1
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"justifyContent": "FLEX_START",
+					"alignItems": "CENTER"
+				},
+				"testId": "VzqWAgnXd"
+			}
+		},
+		{
+			"className": ".sf-label",
+			"id": "4c7e-40b8-7f49-1d15",
+			"props": {
+				"children": [],
+				"name": "lblWeatherStatus",
+				"parent": "fc11-3711-926a-1bc9",
+				"text": "label1",
+				"usePageVariable": true
+			},
+			"type": "Label",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "CENTER"
+				},
+				"minWidth": 250,
+				"testId": "JoXZi_8fq",
+				"text": "label1",
+				"textAlignment": "MIDCENTER",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-textBox",
+			"id": "2b34-577c-0f0b-b8ab",
+			"props": {
+				"children": [],
+				"keyboardType": "TEXTAUTOCOMPLETE",
+				"name": "cityName",
+				"parent": "e891b86d",
+				"usePageVariable": true
+			},
+			"type": "TextBox",
+			"userProps": {
+				"keyboardType": "TEXTAUTOCOMPLETE",
+				"testId": "9HYw2pw-R",
+				"usePageVariable": true
+			}
 		},
 		{
 			"className": ".sf-button",
@@ -120,12 +275,11 @@
 					"alignSelf": "AUTO",
 					"positionType": "RELATIVE"
 				},
+				"testId": "ucEDBF6ZMB",
 				"text": "Next Page",
 				"usePageVariable": true,
-				"width": null,
-				"testId": "ucEDBF6ZMB"
-			},
-			"degree": 1
+				"width": null
+			}
 		}
 	]
 }
