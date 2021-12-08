@@ -11,8 +11,9 @@
 					"372d-db2f-2d8d-f439",
 					"243f-fa83-8c54-85fb",
 					"fc11-3711-926a-1bc9",
-					"2b34-577c-0f0b-b8ab",
-					"9e49-7873-afba-472b"
+					"1758-20d0-18ca-f7a0",
+					"1ddc-d8b2-7889-527c",
+					"aa51-8910-eec2-e4ff"
 				],
 				"isRemovable": true,
 				"name": "page1",
@@ -22,7 +23,7 @@
 			},
 			"type": "Page",
 			"userProps": {
-				"backgroundColor": "rgba( 155, 155, 155, 1 )",
+				"backgroundColor": "rgba( 87, 65, 189, 1 )",
 				"flexProps": {
 					"justifyContent": "FLEX_START",
 					"alignItems": "STRETCH",
@@ -169,8 +170,16 @@
 					"flexGrow": 3,
 					"alignSelf": "CENTER"
 				},
+				"font": {
+					"size": 17,
+					"bold": false,
+					"italic": false,
+					"family": "SFProText",
+					"style": "Regular"
+				},
 				"testId": "9JtaDhYWY",
 				"textAlignment": "MIDLEFT",
+				"textColor": "rgba( 242, 244, 245, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -203,7 +212,8 @@
 			"id": "fc11-3711-926a-1bc9",
 			"props": {
 				"children": [
-					"4c7e-40b8-7f49-1d15"
+					"4c7e-40b8-7f49-1d15",
+					"e938-7bab-5c14-07e3"
 				],
 				"name": "flexLayout2",
 				"parent": "e891b86d"
@@ -215,7 +225,9 @@
 					"justifyContent": "FLEX_START",
 					"alignItems": "CENTER"
 				},
-				"testId": "VzqWAgnXd"
+				"height": "108.93",
+				"testId": "VzqWAgnXd",
+				"width": "332.14"
 			}
 		},
 		{
@@ -237,48 +249,198 @@
 				"testId": "JoXZi_8fq",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
+				"textColor": "rgba( 239, 244, 246, 1 )",
 				"usePageVariable": true
 			}
 		},
 		{
-			"className": ".sf-textBox",
-			"id": "2b34-577c-0f0b-b8ab",
+			"className": ".sf-label",
+			"id": "e938-7bab-5c14-07e3",
 			"props": {
 				"children": [],
-				"keyboardType": "TEXTAUTOCOMPLETE",
-				"name": "cityName",
+				"name": "lblTemp",
+				"parent": "fc11-3711-926a-1bc9",
+				"text": "label1",
+				"usePageVariable": true
+			},
+			"type": "Label",
+			"userProps": {
+				"minWidth": 250,
+				"testId": "rBsDfvymw",
+				"text": "label1",
+				"textAlignment": "MIDCENTER",
+				"textColor": "rgba( 234, 239, 241, 1 )",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"id": "1758-20d0-18ca-f7a0",
+			"props": {
+				"children": [
+					"b278-37de-679d-edc8",
+					"4235-a9f9-eaa2-5c31"
+				],
+				"name": "flexLayout4",
 				"parent": "e891b86d",
 				"usePageVariable": true
 			},
-			"type": "TextBox",
+			"type": "FlexLayout",
 			"userProps": {
-				"keyboardType": "TEXTAUTOCOMPLETE",
-				"testId": "9HYw2pw-R",
+				"flexProps": {
+					"flexDirection": "ROW",
+					"alignItems": "CENTER",
+					"justifyContent": "SPACE_BETWEEN"
+				},
+				"height": "223.21",
+				"testId": "2mt7QqVa0",
+				"usePageVariable": true,
+				"width": "341.07"
+			}
+		},
+		{
+			"className": ".sf-label",
+			"id": "b278-37de-679d-edc8",
+			"props": {
+				"children": [],
+				"name": "lblWind",
+				"parent": "1758-20d0-18ca-f7a0",
+				"text": "label1",
+				"usePageVariable": true
+			},
+			"type": "Label",
+			"userProps": {
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"testId": "VqjgBQwbU",
+				"text": "label1",
+				"textColor": "rgba( 240, 244, 246, 1 )",
 				"usePageVariable": true
 			}
 		},
 		{
-			"className": ".sf-button",
-			"id": "9e49-7873-afba-472b",
+			"className": ".sf-label",
+			"id": "4235-a9f9-eaa2-5c31",
 			"props": {
-				"autoHeight": 50.561797752808985,
 				"children": [],
-				"name": "btnNext",
+				"name": "lblHumidity",
+				"parent": "1758-20d0-18ca-f7a0",
+				"text": "label2",
+				"usePageVariable": true
+			},
+			"type": "Label",
+			"userProps": {
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"testId": "f-jifvFdQ",
+				"text": "label2",
+				"textAlignment": "MIDRIGHT",
+				"textColor": "rgba( 246, 248, 250, 1 )",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-gridView",
+			"id": "1ddc-d8b2-7889-527c",
+			"props": {
+				"children": [
+					"0f29-6555-55f0-e141"
+				],
+				"name": "gridView1",
 				"parent": "e891b86d",
-				"text": "Next Page",
+				"usePageVariable": true
+			},
+			"type": "GridView",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "CENTER",
+					"flexGrow": 1
+				},
+				"height": "210.71",
+				"layoutManager": {
+					"spanCount": 1,
+					"scrollDirection": "HORIZONTAL"
+				},
+				"maxHeight": 100,
+				"testId": "e7BguhxMb",
+				"usePageVariable": true,
+				"width": "291.07"
+			}
+		},
+		{
+			"className": ".sf-gridViewItem .gvFuat",
+			"hiddenComponent": false,
+			"id": "0f29-6555-55f0-e141",
+			"props": {
+				"children": [],
+				"name": "news",
+				"parent": "1ddc-d8b2-7889-527c"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "news",
+				"id": "2d7e-c644-b728-5881"
+			},
+			"type": "GridViewItem",
+			"userProps": {
+				"flex": {
+					"alignContent": 4,
+					"alignItems": 2,
+					"justifyContent": 1,
+					"positionType": 0
+				},
+				"flexProps": {
+					"alignContent": "STRETCH",
+					"alignItems": "CENTER",
+					"alignSelf": "AUTO",
+					"justifyContent": "CENTER",
+					"positionType": "RELATIVE"
+				},
+				"height": "412.50",
+				"left": 0,
+				"testId": "MqldxRDfN",
+				"top": 0,
+				"width": "308.93"
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"hiddenComponent": false,
+			"id": "aa51-8910-eec2-e4ff",
+			"props": {
+				"children": [
+					"99b4-5b4e-29e4-a520"
+				],
+				"name": "flexLayout3",
+				"parent": "e891b86d",
+				"usePageVariable": true
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {},
+				"height": "62.90",
+				"testId": "XpeaY1mYM",
+				"usePageVariable": true,
+				"width": "341.94"
+			}
+		},
+		{
+			"className": ".sf-button .page1-button",
+			"id": "99b4-5b4e-29e4-a520",
+			"props": {
+				"children": [],
+				"name": "button1",
+				"parent": "aa51-8910-eec2-e4ff",
+				"text": "New city",
 				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
-				"autoHeight": 50.561797752808985,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE"
-				},
-				"testId": "ucEDBF6ZMB",
-				"text": "Next Page",
-				"usePageVariable": true,
-				"width": null
+				"testId": "7arEj7o4k",
+				"text": "New city",
+				"usePageVariable": true
 			}
 		}
 	]

@@ -2,12 +2,11 @@
 	"components": [
 		{
 			"className": ".flexLayout .materialTextBox-wrapper",
-			"hiddenComponent": true,
-			"id": "574a-10da-b765-48e5",
+			"id": "ce7b-1384-2994-bda9",
 			"initialized": true,
 			"props": {
 				"children": [],
-				"name": "materialTextBox",
+				"name": "materialTextBox_1",
 				"parent": "57f4-201f-4bfc-5fc6",
 				"usePageVariable": true
 			},

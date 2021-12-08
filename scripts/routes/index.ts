@@ -28,6 +28,18 @@ const router = Router.of({
             headerBarStyle: { visible: true },
           }),
         }),
+        Route.of({
+            path: '/pages/page3',
+            build: buildExtender({
+            // FIXME: Pages.Page3 ?
+              getPageClass: () => Pages.Page3,
+              headerBarStyle: { visible: false },
+            }),
+        //     build((router, route) => {
+        //         const Page1 = require('/pages/Page3');
+        //         return new Page3(state.data, router);
+        //       })
+        }),
       ],
     }),
   ],

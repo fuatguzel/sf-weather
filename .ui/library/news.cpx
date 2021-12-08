@@ -1,0 +1,57 @@
+{
+	"components": [
+		{
+			"className": ".sf-gridViewItem .gvFuat",
+			"id": "2d7e-c644-b728-5881",
+			"props": {
+				"children": [
+					"923d-bb94-0b84-1537"
+				],
+				"name": "news",
+				"parent": "57f4-201f-4bfc-5fc6"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "GridViewItem",
+			"userProps": {
+				"flexProps": {
+					"alignContent": "STRETCH",
+					"alignItems": "CENTER",
+					"alignSelf": "AUTO",
+					"justifyContent": "CENTER"
+				},
+				"height": 220,
+				"left": "74.19",
+				"testId": "MqldxRDfN",
+				"top": "243.55",
+				"width": 200
+			}
+		},
+		{
+			"className": ".sf-label",
+			"id": "923d-bb94-0b84-1537",
+			"props": {
+				"children": [],
+				"name": "lblNews",
+				"parent": "2d7e-c644-b728-5881",
+				"text": "label1",
+				"usePageVariable": true
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Label",
+			"userProps": {
+				"flexProps": {
+					"alignSelf": "CENTER"
+				},
+				"minWidth": 150,
+				"testId": "Zq4PItuJq",
+				"text": "label1",
+				"textColor": "rgba( 221, 228, 231, 1 )",
+				"usePageVariable": true
+			}
+		}
+	]
+}

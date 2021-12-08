@@ -1,0 +1,7 @@
+{
+	".page1": {
+		"&-button": {
+			"backgroundColor": "rgba( 195, 102, 102, 1 )"
+		}
+	}
+}
