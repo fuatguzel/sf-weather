@@ -2,10 +2,12 @@
 	"components": [
 		{
 			"className": ".sf-gridViewItem .gvFuat",
+			"hiddenComponent": false,
 			"id": "2d7e-c644-b728-5881",
 			"props": {
 				"children": [
-					"923d-bb94-0b84-1537"
+					"923d-bb94-0b84-1537",
+					"3f35-5218-ea76-6360"
 				],
 				"name": "news",
 				"parent": "57f4-201f-4bfc-5fc6"
@@ -22,9 +24,9 @@
 					"justifyContent": "CENTER"
 				},
 				"height": 220,
-				"left": "74.19",
+				"left": "87.27",
 				"testId": "MqldxRDfN",
-				"top": "243.55",
+				"top": "109.09",
 				"width": 200
 			}
 		},
@@ -49,7 +51,31 @@
 				"minWidth": 150,
 				"testId": "Zq4PItuJq",
 				"text": "label1",
-				"textColor": "rgba( 221, 228, 231, 1 )",
+				"textAlignment": "MIDCENTER",
+				"textColor": "rgba( 87, 65, 189, 1 )",
+				"usePageVariable": true
+			}
+		},
+		{
+			"className": ".sf-label",
+			"id": "3f35-5218-ea76-6360",
+			"props": {
+				"children": [],
+				"name": "lblSecond",
+				"parent": "2d7e-c644-b728-5881",
+				"text": "label2",
+				"usePageVariable": true
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Label",
+			"userProps": {
+				"minWidth": 150,
+				"testId": "-j6FlWpsj",
+				"text": "label2",
+				"textAlignment": "MIDCENTER",
+				"textColor": "rgba( 0, 0, 0, 1 )",
 				"usePageVariable": true
 			}
 		}

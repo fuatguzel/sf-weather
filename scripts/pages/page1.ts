@@ -5,12 +5,13 @@ import System from '@smartface/native/device/system';
 import Application from '@smartface/native/application';
 import Location from '@smartface/native/device/location';
 import PermissionUtil from '@smartface/extension-utils/lib/permission';
-import { getWeatherByLocation } from '../api/weatherRepository';
+import { getWeatherByLocation, getRoadRisk } from '../api/weatherRepository';
 import { getLocation } from '@smartface/extension-utils/lib/location';
 import View from '@smartface/native/ui/view';
-import GridViewItem from '@smartface/native/ui/gridviewitem';
 import Color from '@smartface/native/ui/color';
 import News from 'generated/my-components/News';
+
+import store from 'duck/store';
 
 const COLORS: string[] = [
     "#ffffff", "#e6f7ff", "#cceeff", "#b3e6ff", "#99ddff", "#80d4ff", "#66ccff",
@@ -18,8 +19,17 @@ const COLORS: string[] = [
     "#006699"
 ];
 
+const STATICS: string[] = [
+    "Lorem ipsum lorem ipsum lorem ipsum.", "Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum."
+];
+
 export default class Page1 extends Page1Design {
     router: any;
+    alerts: any;
+    latitude: number;
+    longitude: number;
+    city: string;
+    date: number;
     constructor() {
         super();
         // Overrides super.onShow method
@@ -27,12 +37,33 @@ export default class Page1 extends Page1Design {
         // Overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
+        this.gridView1.itemCount = STATICS.length; ;
+        this.gridView1.layoutManager.onItemLength = (length: number) => {
+            return 5*length;
+        }
+        this.gridView1.onItemBind = (gridViewItem: News, index: number) => {
+            // FIXME:
+            gridViewItem.lblNews.text = STATICS[index];
+            gridViewItem.dispatch({
+                type: "updateUserStyle",
+                userStyle: {
+                  backgroundColor: `${COLORS[index]}`
+                }
+              });
+            //Color.create()
+            //gridViewItem.background = COLORS[index];
+        }
+
         this.calendar.on(View.Events.Touch, () => {
-            this.router.push('/pages/page2', { message: 'CITY LIST' });
+            this.router.push('/pages/page2', { message: {
+                lat: this.latitude,
+                lon: this.longitude,
+                city: this.city
+            } });
         });
 
         this.button1.onPress = () => {
-            this.router.push('/pages/page3', {message: 'NULL'});
+            this.router.push('/pages/page4', {message: 'NULL'});
         }
     }
     toggleIndicatorVisibility(toggle: boolean) {
@@ -51,18 +82,34 @@ export default class Page1 extends Page1Design {
     initGridView() {
         // TODO:
         
-        this.gridView1.itemCount = COLORS.length; ;
+        this.gridView1.itemCount = STATICS.length; ;
         this.gridView1.layoutManager.onItemLength = (length: number) => {
             return 5*length;
         }
-        this.gridView1.onItemBind = (gridViewItem: GridViewItem, index: number) => {
+        this.gridView1.onItemBind = (gridViewItem: News, index: number) => {
             // FIXME:
-            //gridViewItem.label.text = COLORS[index];
-            
+            //gridViewItem.lblNews.text = STATICS[index];
+            gridViewItem.dispatch({
+                type: "updateUserStyle",
+                userStyle: {
+                  backgroundColor: `${COLORS[index]}`
+                }
+              });
+            //Color.create()
+            //gridViewItem.background = COLORS[index];
         }
         this.gridView1.refreshData();
     }
 
+    async getRoadRiskInfos() {
+        const loc = getLocation();
+        const response = await getRoadRisk(this.latitude, this.longitude, this.date);
+        if(response) {
+            console.log('Road Risk responce => ', response)
+        }
+    }
+
+    
     async getCurrentLocation() {
         Location.start(Location.Android.Priority.HIGH_ACCURACY, 1000)
         const loc = await getLocation()
@@ -70,12 +117,21 @@ export default class Page1 extends Page1Design {
             const response = await getWeatherByLocation(loc.latitude, loc.longitude) 
             if(response) {
                 console.log('location responce => ', response)
+                this.longitude = response.coord.lon;
+                this.latitude = response.coord.lat;
+                this.date = response.dt;
+                this.city = response.name;
+                // this.calendar.on(View.Events.Touch, () => {
+                //     this.router.push('/pages/page2', { message: response });
+                // });
                 this.lblCity.text = response.name;
+                this.lblCity.textColor = Color.GREEN;
                 this.lblWeatherStatus.text = response.weather[0].main;
                 this.lblTemp.text = response.weather[0].description;
                 this.lblWind.text = response.wind.speed
                 this.lblHumidity.text = response.main.humidity
                 // TODO: Background change
+
                 switch (response.weather[0].main) {
                     case "Clouds":
                         this.layout.backgroundColor = Color.GRAY;
@@ -85,7 +141,10 @@ export default class Page1 extends Page1Design {
                         break;  
                     case "Rain":
                         this.layout.backgroundColor = Color.BLUE;
-                        break;     
+                        break;
+                    case "Clear":
+                        this.layout.backgroundColor = Color.WHITE;
+                    break;       
                     default:
                         break;
                 }
@@ -106,6 +165,14 @@ export default class Page1 extends Page1Design {
 function onShow(this: Page1, superOnShow: () => void) {
     superOnShow();
     this.headerBar.titleLayout.applyLayout();
+
+    const currentCityName = this.lblCity.text;
+    const sessionCity = store.getState().session.city
+    if ((currentCityName != sessionCity.name) && sessionCity.id != -1) {
+        console.log('convertion:', Number(sessionCity.latitude), Number(sessionCity.longitude))
+        getWeatherByLocation(Number(sessionCity.latitude), Number(sessionCity.longitude))
+
+    }
 
     Location.android.checkSettings({
         onSuccess: () => {
@@ -140,6 +207,7 @@ function onShow(this: Page1, superOnShow: () => void) {
  */
 function onLoad(this: Page1, superOnLoad: () => void) {
     superOnLoad();
+    const session = store.getState();
     console.info('Onload page1');
     this.headerBar.leftItemEnabled = false;
     this.headerBar.titleLayout = new PageTitleLayout();
@@ -147,5 +215,6 @@ function onLoad(this: Page1, superOnLoad: () => void) {
     if (System.OS === 'Android') {
         this.headerBar.title = '';
     }
-    this.initGridView();
+    //this.initGridView();
+    this.getRoadRiskInfos();
 }

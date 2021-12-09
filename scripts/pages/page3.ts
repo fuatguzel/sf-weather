@@ -11,9 +11,9 @@ export default class Page3 extends Page3Design {
         //this.toggleIndicatorVisibility(true);
         this.activityIndicator1.visible = false;
         this.button1.onPress = async () => {
-            this.toggleIndicatorVisibility(false);
+            //this.toggleIndicatorVisibility(false);
             const response = await getWeatherByCityName(this.textBox1.text);
-            this.toggleIndicatorVisibility(true);
+            //this.toggleIndicatorVisibility(true);
             if (response) {
                 console.log('city response', response);
                 // TODO: response should be in state. And return datas back.

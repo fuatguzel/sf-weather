@@ -84,11 +84,11 @@
 				"flexProps": {
 					"positionType": "RELATIVE"
 				},
-				"height": "46.77",
+				"height": "41.82",
 				"testId": "KG2cawPo5",
 				"usePageVariable": true,
 				"visible": true,
-				"width": "354.84"
+				"width": "349.09"
 			}
 		},
 		{
@@ -245,11 +245,18 @@
 				"flexProps": {
 					"alignSelf": "CENTER"
 				},
+				"font": {
+					"size": 17,
+					"bold": false,
+					"italic": false,
+					"family": "SFProText",
+					"style": "Regular"
+				},
 				"minWidth": 250,
 				"testId": "JoXZi_8fq",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 239, 244, 246, 1 )",
+				"textColor": "rgba( 245, 166, 35, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -269,7 +276,7 @@
 				"testId": "rBsDfvymw",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 234, 239, 241, 1 )",
+				"textColor": "rgba( 87, 65, 189, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -315,7 +322,7 @@
 				},
 				"testId": "VqjgBQwbU",
 				"text": "label1",
-				"textColor": "rgba( 240, 244, 246, 1 )",
+				"textColor": "rgba( 87, 65, 189, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -337,7 +344,7 @@
 				"testId": "f-jifvFdQ",
 				"text": "label2",
 				"textAlignment": "MIDRIGHT",
-				"textColor": "rgba( 246, 248, 250, 1 )",
+				"textColor": "rgba( 87, 65, 189, 1 )",
 				"usePageVariable": true
 			}
 		},
