@@ -12,16 +12,30 @@ import Color from '@smartface/native/ui/color';
 import News from 'generated/my-components/News';
 
 import store from 'duck/store';
+import Screen from '@smartface/native/device/screen';
 
 const COLORS: string[] = [
-    "#ffffff", "#e6f7ff", "#cceeff", "#b3e6ff", "#99ddff", "#80d4ff", "#66ccff",
-    "#4dc3ff", "#33bbff", "#1ab2ff", "#00aaff", "#0099e6", "#0088cc", "#0077b3",
-    "#006699"
+    "#FDFAF6","#EEC4C4","#FFF5AB" 
 ];
 
-const STATICS: string[] = [
-    "Lorem ipsum lorem ipsum lorem ipsum.", "Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum.","Lorem ipsum lorem ipsum lorem ipsum."
+const DATES: string[] = [
+    'Today', 'Nex week', 'Next month'
 ];
+
+const ALERTS: object = [
+    {
+        "message_type": "success",
+        "message": "Good days."
+    },
+    {
+        "message_type": "danger",
+        "message": "Don't go outside!"
+    },
+    {
+        "message_type": "warning",
+        "message": "Active children and adults, and people with lung disease, such as asthma, should reduce prolonged or heavy exertion outdoors"
+    }
+]
 
 export default class Page1 extends Page1Design {
     router: any;
@@ -37,22 +51,9 @@ export default class Page1 extends Page1Design {
         // Overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-        this.gridView1.itemCount = STATICS.length; ;
-        this.gridView1.layoutManager.onItemLength = (length: number) => {
-            return 5*length;
-        }
-        this.gridView1.onItemBind = (gridViewItem: News, index: number) => {
-            // FIXME:
-            gridViewItem.lblNews.text = STATICS[index];
-            gridViewItem.dispatch({
-                type: "updateUserStyle",
-                userStyle: {
-                  backgroundColor: `${COLORS[index]}`
-                }
-              });
-            //Color.create()
-            //gridViewItem.background = COLORS[index];
-        }
+        this.location.on(View.Events.Touch, () => {
+            this.router.push('/pages/page4');
+        })
 
         this.calendar.on(View.Events.Touch, () => {
             this.router.push('/pages/page2', { message: {
@@ -62,98 +63,54 @@ export default class Page1 extends Page1Design {
             } });
         });
 
-        this.button1.onPress = () => {
-            this.router.push('/pages/page4', {message: 'NULL'});
-        }
-    }
-    toggleIndicatorVisibility(toggle: boolean) {
-        this.activityIndicator1.dispatch({
-            type: 'updateUserStyle',
-            userStyle: {
-                visible: toggle
-            }
-        });
-        throw new Error("Method not implemented.");
-    }
-    hideFlex() {
-        this.flexLayout1.visible = false;
+        this.getCurrentLocation();
     }
 
     initGridView() {
-        // TODO:
-        
-        this.gridView1.itemCount = STATICS.length; ;
+        this.gridView1.itemCount = DATES.length; ;
         this.gridView1.layoutManager.onItemLength = (length: number) => {
-            return 5*length;
+            return Screen.width - length;
         }
+        // TODO: Add ALERT>message_type for background colors.
         this.gridView1.onItemBind = (gridViewItem: News, index: number) => {
-            // FIXME:
-            //gridViewItem.lblNews.text = STATICS[index];
+            gridViewItem.lblNews.text = DATES[index];
             gridViewItem.dispatch({
                 type: "updateUserStyle",
                 userStyle: {
                   backgroundColor: `${COLORS[index]}`
                 }
               });
-            //Color.create()
-            //gridViewItem.background = COLORS[index];
+            gridViewItem.lblSecond.text = ALERTS[index].message;
+            
         }
         this.gridView1.refreshData();
     }
 
-    async getRoadRiskInfos() {
-        const loc = getLocation();
-        const response = await getRoadRisk(this.latitude, this.longitude, this.date);
-        if(response) {
-            console.log('Road Risk responce => ', response)
+    async getWeatherInfoByLocation(latitude: number, longitude: number) {
+        try {
+            const response = await getWeatherByLocation(latitude, longitude)
+            if (response) {
+                this.city = response.name
+                this.latitude = response.coord.lat
+                this.longitude = response.coord.lon
+
+                this.lblCity.text = response.name
+                this.lblWeatherStatus.text = response.weather[0].main;
+                this.lblTemp.text = response.main.temp+'°';
+                this.label1.text = response.weather[0].description;
+
+                this.layout.backgroundColor = getBackgroundColor(response.weather[0].main)
+            }
+        } catch (error) {
+
         }
     }
-
     
     async getCurrentLocation() {
         Location.start(Location.Android.Priority.HIGH_ACCURACY, 1000)
         const loc = await getLocation()
         if(loc) {
-            const response = await getWeatherByLocation(loc.latitude, loc.longitude) 
-            if(response) {
-                console.log('location responce => ', response)
-                this.longitude = response.coord.lon;
-                this.latitude = response.coord.lat;
-                this.date = response.dt;
-                this.city = response.name;
-                // this.calendar.on(View.Events.Touch, () => {
-                //     this.router.push('/pages/page2', { message: response });
-                // });
-                this.lblCity.text = response.name;
-                this.lblCity.textColor = Color.GREEN;
-                this.lblWeatherStatus.text = response.weather[0].main;
-                this.lblTemp.text = response.weather[0].description;
-                this.lblWind.text = response.wind.speed
-                this.lblHumidity.text = response.main.humidity
-                // TODO: Background change
-
-                switch (response.weather[0].main) {
-                    case "Clouds":
-                        this.layout.backgroundColor = Color.GRAY;
-                        break;
-                    case "Sunny":
-                        this.layout.backgroundColor = Color.YELLOW;
-                        break;  
-                    case "Rain":
-                        this.layout.backgroundColor = Color.BLUE;
-                        break;
-                    case "Clear":
-                        this.layout.backgroundColor = Color.WHITE;
-                    break;       
-                    default:
-                        break;
-                }
-                this.toggleIndicatorVisibility(false);
-                this.hideFlex();
-            }
-            else {
-                this.toggleIndicatorVisibility(false);
-            }
+            const response = await this.getWeatherInfoByLocation(loc.latitude, loc.longitude) 
         }
     }
 }
@@ -164,40 +121,13 @@ export default class Page1 extends Page1Design {
  */
 function onShow(this: Page1, superOnShow: () => void) {
     superOnShow();
-    this.headerBar.titleLayout.applyLayout();
+    //this.headerBar.titleLayout.applyLayout();
 
     const currentCityName = this.lblCity.text;
     const sessionCity = store.getState().session.city
     if ((currentCityName != sessionCity.name) && sessionCity.id != -1) {
         console.log('convertion:', Number(sessionCity.latitude), Number(sessionCity.longitude))
-        getWeatherByLocation(Number(sessionCity.latitude), Number(sessionCity.longitude))
-
-    }
-
-    Location.android.checkSettings({
-        onSuccess: () => {
-            PermissionUtil.getPermission({androidPermission: Application.Android.Permissions.ACCESS_FINE_LOCATION, permissionText: 'Please go to the settings and grant permission'})
-                .then(() => {
-                    this.getCurrentLocation()
-                })
-                .then((reason) => {
-                    console.log('Permission rejected'+reason)
-                })
-    },
-    onFailure: (e: { statusCode: Location.Android.SettingsStatusCodes }) => {
-        console.log('Location.checkSettings onFailure');
-        if (e.statusCode == Location.Android.SettingsStatusCodes.DENIED) {
-            console.log('SettingsStatusCodes.DENIED');
-        } else {
-            // go to settings via Application.call
-            console.log('SettingsStatusCodes.OTHER' + Location.Android.SettingsStatusCodes.OTHER);
-        }
-    }
-    })
-    if (System.OS === 'iOS') {
-        this.getCurrentLocation();
-    } else {
-        this.getCurrentLocation();
+        this.getWeatherInfoByLocation(Number(sessionCity.latitude), Number(sessionCity.longitude))
     }
 }
 
@@ -208,13 +138,24 @@ function onShow(this: Page1, superOnShow: () => void) {
 function onLoad(this: Page1, superOnLoad: () => void) {
     superOnLoad();
     const session = store.getState();
-    console.info('Onload page1');
-    this.headerBar.leftItemEnabled = false;
-    this.headerBar.titleLayout = new PageTitleLayout();
-    componentContextPatch(this.headerBar.titleLayout, 'titleLayout');
-    if (System.OS === 'Android') {
-        this.headerBar.title = '';
+    this.initGridView();
+}
+
+function getBackgroundColor(main: string): Color {
+    switch (main) {
+        case "Clouds":
+            return Color.create('#716F81'); break;
+        case "Thunderstorm":
+            return Color.create('#867AE9'); break;   
+        case "Sunny":
+            return Color.create('#FFF338'); break;   
+        case "Rain":
+            return Color.create('#64C9CF'); break;   
+        case "Mist":
+            return Color.create('#DAD0C2'); break;   
+        case "Clear":
+            return Color.create('#A2CDCD'); break;
+        default:
+            return Color.WHITE; break;
     }
-    //this.initGridView();
-    this.getRoadRiskInfos();
 }

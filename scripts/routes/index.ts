@@ -6,8 +6,10 @@ import {
 } from '@smartface/router';
 import * as Pages from 'pages';
 import '@smartface/extension-utils/lib/router/goBack'; // Implements onBackButtonPressed
+
 import backClose from '@smartface/extension-utils/lib/router/back-close';
-//backClose.setDefaultBackStyle({image: , hideTitle: true});
+import Image from '@smartface/native/ui/image';
+backClose.setDefaultBackStyle({image: Image.createFromFile("images://arrow_back.png"), hideTitle: true});
 
 const router = Router.of({
   path: '/',
@@ -29,13 +31,6 @@ const router = Router.of({
             getPageClass: () => Pages.Page2,
             headerBarStyle: { visible: true },
           }),
-        }),
-        Route.of({
-            path: '/pages/page3',
-            build: buildExtender({
-              getPageClass: () => Pages.Page3,
-              headerBarStyle: { visible: false },
-            }),
         }),
         Route.of({
             path: '/pages/page4',

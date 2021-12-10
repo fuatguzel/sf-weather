@@ -8,12 +8,9 @@
 				"children": [
 					"42b807d1",
 					"b7d28cff",
-					"372d-db2f-2d8d-f439",
 					"243f-fa83-8c54-85fb",
 					"fc11-3711-926a-1bc9",
-					"1758-20d0-18ca-f7a0",
-					"1ddc-d8b2-7889-527c",
-					"aa51-8910-eec2-e4ff"
+					"1ddc-d8b2-7889-527c"
 				],
 				"isRemovable": true,
 				"name": "page1",
@@ -23,7 +20,7 @@
 			},
 			"type": "Page",
 			"userProps": {
-				"backgroundColor": "rgba( 87, 65, 189, 1 )",
+				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"flexProps": {
 					"justifyContent": "FLEX_START",
 					"alignItems": "STRETCH",
@@ -49,6 +46,9 @@
 			},
 			"type": "StatusBar",
 			"userProps": {
+				"android": {
+					"color": "rgba( 0, 0, 0, 1 )"
+				},
 				"visible": true
 			}
 		},
@@ -65,48 +65,7 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "Page1",
-				"visible": true
-			}
-		},
-		{
-			"className": ".sf-flexLayout",
-			"id": "372d-db2f-2d8d-f439",
-			"props": {
-				"children": [
-					"263e-7373-689c-86ed"
-				],
-				"name": "flexLayout1",
-				"parent": "e891b86d",
-				"usePageVariable": true
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"flexProps": {
-					"positionType": "RELATIVE"
-				},
-				"height": "41.82",
-				"testId": "KG2cawPo5",
-				"usePageVariable": true,
-				"visible": true,
-				"width": "349.09"
-			}
-		},
-		{
-			"className": ".sf-activityIndicator",
-			"id": "263e-7373-689c-86ed",
-			"props": {
-				"children": [],
-				"name": "activityIndicator1",
-				"parent": "372d-db2f-2d8d-f439",
-				"usePageVariable": true
-			},
-			"type": "ActivityIndicator",
-			"userProps": {
-				"flexProps": {
-					"positionType": "RELATIVE"
-				},
-				"testId": "8och1ncIK",
-				"usePageVariable": true
+				"visible": false
 			}
 		},
 		{
@@ -179,7 +138,7 @@
 				},
 				"testId": "9JtaDhYWY",
 				"textAlignment": "MIDLEFT",
-				"textColor": "rgba( 242, 244, 245, 1 )",
+				"textColor": "rgba( 74, 74, 74, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -213,7 +172,8 @@
 			"props": {
 				"children": [
 					"4c7e-40b8-7f49-1d15",
-					"e938-7bab-5c14-07e3"
+					"e938-7bab-5c14-07e3",
+					"1654-96d6-edd4-7532"
 				],
 				"name": "flexLayout2",
 				"parent": "e891b86d"
@@ -222,12 +182,13 @@
 			"userProps": {
 				"flexProps": {
 					"alignSelf": "AUTO",
-					"justifyContent": "FLEX_START",
-					"alignItems": "CENTER"
+					"justifyContent": "SPACE_AROUND",
+					"alignItems": "CENTER",
+					"flexGrow": 2
 				},
-				"height": "108.93",
+				"height": "503.64",
 				"testId": "VzqWAgnXd",
-				"width": "332.14"
+				"width": "338.18"
 			}
 		},
 		{
@@ -246,7 +207,7 @@
 					"alignSelf": "CENTER"
 				},
 				"font": {
-					"size": 17,
+					"size": 35,
 					"bold": false,
 					"italic": false,
 					"family": "SFProText",
@@ -256,7 +217,7 @@
 				"testId": "JoXZi_8fq",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 245, 166, 35, 1 )",
+				"textColor": "rgba( 74, 74, 74, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -272,79 +233,38 @@
 			},
 			"type": "Label",
 			"userProps": {
+				"font": {
+					"size": 45,
+					"bold": true,
+					"italic": false,
+					"family": "SFProText",
+					"style": "Semibold"
+				},
 				"minWidth": 250,
 				"testId": "rBsDfvymw",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 87, 65, 189, 1 )",
-				"usePageVariable": true
-			}
-		},
-		{
-			"className": ".sf-flexLayout",
-			"id": "1758-20d0-18ca-f7a0",
-			"props": {
-				"children": [
-					"b278-37de-679d-edc8",
-					"4235-a9f9-eaa2-5c31"
-				],
-				"name": "flexLayout4",
-				"parent": "e891b86d",
-				"usePageVariable": true
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"flexProps": {
-					"flexDirection": "ROW",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_BETWEEN"
-				},
-				"height": "223.21",
-				"testId": "2mt7QqVa0",
-				"usePageVariable": true,
-				"width": "341.07"
-			}
-		},
-		{
-			"className": ".sf-label",
-			"id": "b278-37de-679d-edc8",
-			"props": {
-				"children": [],
-				"name": "lblWind",
-				"parent": "1758-20d0-18ca-f7a0",
-				"text": "label1",
-				"usePageVariable": true
-			},
-			"type": "Label",
-			"userProps": {
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"testId": "VqjgBQwbU",
-				"text": "label1",
-				"textColor": "rgba( 87, 65, 189, 1 )",
+				"textColor": "rgba( 74, 74, 74, 1 )",
 				"usePageVariable": true
 			}
 		},
 		{
 			"className": ".sf-label",
-			"id": "4235-a9f9-eaa2-5c31",
+			"id": "1654-96d6-edd4-7532",
 			"props": {
 				"children": [],
-				"name": "lblHumidity",
-				"parent": "1758-20d0-18ca-f7a0",
-				"text": "label2",
+				"name": "label1",
+				"parent": "fc11-3711-926a-1bc9",
+				"text": "label1",
 				"usePageVariable": true
 			},
 			"type": "Label",
 			"userProps": {
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"testId": "f-jifvFdQ",
-				"text": "label2",
-				"textAlignment": "MIDRIGHT",
-				"textColor": "rgba( 87, 65, 189, 1 )",
+				"minWidth": 150,
+				"testId": "xohbrEP5I",
+				"text": "label1",
+				"textAlignment": "MIDCENTER",
+				"textColor": "rgba( 74, 74, 74, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -365,7 +285,10 @@
 					"alignSelf": "CENTER",
 					"flexGrow": 1
 				},
-				"height": "210.71",
+				"height": 300,
+				"ios": {
+					"shadowRadius": 10
+				},
 				"layoutManager": {
 					"spanCount": 1,
 					"scrollDirection": "HORIZONTAL"
@@ -373,7 +296,7 @@
 				"maxHeight": 100,
 				"testId": "e7BguhxMb",
 				"usePageVariable": true,
-				"width": "291.07"
+				"width": 334
 			}
 		},
 		{
@@ -392,6 +315,7 @@
 			},
 			"type": "GridViewItem",
 			"userProps": {
+				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"flex": {
 					"alignContent": 4,
 					"alignItems": 2,
@@ -410,44 +334,6 @@
 				"testId": "MqldxRDfN",
 				"top": 0,
 				"width": "308.93"
-			}
-		},
-		{
-			"className": ".sf-flexLayout",
-			"hiddenComponent": false,
-			"id": "aa51-8910-eec2-e4ff",
-			"props": {
-				"children": [
-					"99b4-5b4e-29e4-a520"
-				],
-				"name": "flexLayout3",
-				"parent": "e891b86d",
-				"usePageVariable": true
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"flexProps": {},
-				"height": "62.90",
-				"testId": "XpeaY1mYM",
-				"usePageVariable": true,
-				"width": "341.94"
-			}
-		},
-		{
-			"className": ".sf-button .page1-button",
-			"id": "99b4-5b4e-29e4-a520",
-			"props": {
-				"children": [],
-				"name": "button1",
-				"parent": "aa51-8910-eec2-e4ff",
-				"text": "New city",
-				"usePageVariable": true
-			},
-			"type": "Button",
-			"userProps": {
-				"testId": "7arEj7o4k",
-				"text": "New city",
-				"usePageVariable": true
 			}
 		}
 	]

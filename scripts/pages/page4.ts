@@ -42,10 +42,6 @@ export default class Page4 extends Page4Design {
         this.searchedCities = response
         this.initListView();
     }
-
-    initSearchView() {
-        //this.smoothSearch.searchBarHint = "Search";
-    }
     initListView() {
         this.listView1.itemCount = this.cities.length
         this.listView1.rowHeight = 50
@@ -65,6 +61,7 @@ export default class Page4 extends Page4Design {
             )
 
             store.dispatch(SessionActions.updateCity(selectedCity))
+            console.log('REDUX '+store.getState().session.city)
             this.router.goBack();
         }
         this.listView1.onPullRefresh = () => {
@@ -119,5 +116,6 @@ function onShow(this: Page4, superOnShow: () => void) {
 function onLoad(this: Page4, superOnLoad: () => void) {
 	superOnLoad();
     this.listView1.visible = false;
+    this.initLoaderLayout()
     this.getAllCities();
 }

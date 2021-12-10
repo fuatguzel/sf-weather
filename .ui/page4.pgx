@@ -39,11 +39,11 @@
 				"isRemovable": false,
 				"name": "headerBar",
 				"parent": "38b1-4f71-add9-c21a",
-				"title": "page4"
+				"title": "Select City"
 			},
 			"type": "HeaderBar",
 			"userProps": {
-				"title": "page4"
+				"title": "Select City"
 			}
 		},
 		{

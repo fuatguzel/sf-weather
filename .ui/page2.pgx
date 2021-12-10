@@ -8,7 +8,8 @@
 				"children": [
 					"a829471c",
 					"35f1c1a1",
-					"4775-20c6-3763-f988"
+					"4775-20c6-3763-f988",
+					"b5e3-e3e2-5e40-c78e"
 				],
 				"isRemovable": true,
 				"name": "page2",
@@ -56,7 +57,7 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "Page2",
-				"visible": true
+				"visible": false
 			}
 		},
 		{
@@ -73,9 +74,9 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"height": "561.82",
+				"height": "574.55",
 				"testId": "0AMujjLLN",
-				"width": "338.18"
+				"width": "340"
 			}
 		},
 		{
@@ -143,6 +144,42 @@
 				"left": 0,
 				"testId": "9MDrmoYtp",
 				"top": 0
+			}
+		},
+		{
+			"className": ".sf-flexLayout",
+			"id": "b5e3-e3e2-5e40-c78e",
+			"props": {
+				"children": [
+					"d1e1-259b-190b-3209"
+				],
+				"name": "flexLayout1",
+				"parent": "7761adc8"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {},
+				"height": "76.36",
+				"testId": "SrthbvJIX",
+				"width": "349.09"
+			}
+		},
+		{
+			"className": ".sf-label",
+			"id": "d1e1-259b-190b-3209",
+			"props": {
+				"children": [],
+				"name": "label2",
+				"parent": "b5e3-e3e2-5e40-c78e",
+				"text": "Back",
+				"usePageVariable": true
+			},
+			"type": "Label",
+			"userProps": {
+				"testId": "4134_Hv22",
+				"text": "Back",
+				"textAlignment": "MIDCENTER",
+				"usePageVariable": true
 			}
 		}
 	]

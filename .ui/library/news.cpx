@@ -52,7 +52,7 @@
 				"testId": "Zq4PItuJq",
 				"text": "label1",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 87, 65, 189, 1 )",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"usePageVariable": true
 			}
 		},
@@ -75,7 +75,7 @@
 				"testId": "-j6FlWpsj",
 				"text": "label2",
 				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 0, 0, 0, 1 )",
+				"textColor": "rgba( 74, 74, 74, 1 )",
 				"usePageVariable": true
 			}
 		}
